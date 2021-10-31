@@ -1,11 +1,15 @@
 import { Constructor } from "@aster-js/core";
 
 export interface StoredPropertyConfig {
+    /** Key used in local or session storage. Default will be `__Stored__${propertyKey}` */
     readonly storeKey: string;
+    /** Type of data stored, default is Object */
     readonly dataType: Constructor;
+    /** Two way converter to serialize and deserialize the stored data, default will use JSON Serialization */
     readonly converter: (value: any, dataType: Constructor) => any;
-    /** Timeout in millisecond for th */
+    /** Timeout in millisecond, default is infinity */
     readonly timeout: number;
+    /** Default is localStorage */
     readonly storage: Storage;
 }
 
@@ -22,7 +26,7 @@ export const Stored = (options?: StoredPropertyOptions) => (target: Object, prop
     options ??= {};
 
     const config: StoredPropertyConfig = {
-        storeKey: String(propertyKey),
+        storeKey: `__Stored__${String(propertyKey)}`,
         ...defaultConfig,
         ...options
     };
