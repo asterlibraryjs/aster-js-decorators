@@ -2,7 +2,7 @@
 
 ## Memoize
 
-The memoize decorator allow create an accessor that will cache the result for further calls 
+The memoize decorator allow create an accessor that will cache the result for further calls
 
 ```ts
 class Sample {
@@ -28,6 +28,6 @@ class Sample {
 ### Options
 
 - `dataType`: Use to validate the input value and by the converter.
-- `storage`: allow to switch between local or session storage. Custom implementation can also be pprovided.
+- `storage`: Allow to switch between local or session storage. Custom implementation can also be pprovided.
 - `converter`: Convert the value to and from the storage. The converter expect a callback and the call will provide two arguments, the value that need to be converted and the type expected: when the value is converter for the storage, the type expected will be string, when the converter is call in the other way, the `dataType` is provided.
 - `timeout`: The timeout is used to deprecate the value in the storage. After the delay, no value will be returned.
